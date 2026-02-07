@@ -1,42 +1,520 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #f8f6f2;
+  --sage: #9caf9f;
+  --deep-green: #2f4f3e;
+  --gold: #c4a75a;
+  --text-dark: #1f2d26;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.6;
 }
 
+/* Make html/body take full height */
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Wrap the whole page in a flex container */
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* full viewport height */
 }
 
-* {
-  box-sizing: border-box;
+/* Main content should grow to fill space */
+main {
+  flex: 1;
+  /* this pushes footer down */
+}
+
+
+/*
+------------------------------------------------------------------
+--------------------------FOOTER----------------------------------
+------------------------------------------------------------------
+*/
+
+.site-footer {
+  background: var(--deep-green);
+  color: #ffffff;
+  padding: 4rem 2rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.footer-brand h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.footer-brand p {
+  max-width: 420px;
+  opacity: 0.9;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.footer-links ul {
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
-a {
-  color: inherit;
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.site-footer a {
+  color: var(--gold);
+  transition: opacity 0.2s ease;
+}
+
+.site-footer a:hover {
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+  opacity: 0.85;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.footer-disclaimer {
+  margin-top: 0rem;
+}
+
+/*
+------------------------------------------------------------------
+--------------------------NAVBAR----------------------------------
+------------------------------------------------------------------
+*/
+
+/* Navbar Base */
+.navbar {
+  background: var(--deep-green);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--gold);
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--sage);
+}
+
+/* Hamburger menu (mobile) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/*
+------------------------------------------------------------------
+--------------------------HOME PAGE-------------------------------
+------------------------------------------------------------------
+*/
+
+/* Containers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------------- Hero Section ---------------- */
+.split-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+}
+
+.hero-visual {
+  background-image: url("/DGCHero.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 10px;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.18));
+}
+
+
+.elevated-care {
+  padding: 6rem 4rem;
+
+}
+
+.elevated-care h1 {
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: var(--deep-green);
+}
+
+.elevated-care h2 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.85rem 2.5rem;
+
+  background-color: var(--gold);
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Continuity Section */
+.continuity-section {
+  background: var(--sage);
+  color: var(--deep-green);
+  padding: 3rem 0;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+/* Service Areas Section */
+.service-areas-section {
+  background: var(--cream);
+  color: var(--text-dark);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.service-areas-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+/* CTA Section */
+.cta-section {
+  background: var(--cream);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--deep-green);
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+/*
+------------------------------------------------------------------
+--------------------------APPROACH PAGE---------------------------
+------------------------------------------------------------------
+*/
+
+.approach-page {
+  background-color: var(--cream);
+  color: var(--text-dark);
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.approach-page section {
+  margin-bottom: 1rem;
+  padding: .5rem 0;
+}
+
+
+.approach-page h1,
+.approach-page h2,
+.approach-page h3 {
+  color: var(--deep-green);
+  margin-bottom: 1rem;
+}
+
+.approach-page p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.approach-page ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/*
+------------------------------------------------------------------
+--------------------------ABOUT PAGE------------------------------
+------------------------------------------------------------------
+*/
+
+.about-page {
+  background-color: var(--cream);
+  color: var(--text-dark);
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-page section {
+  margin-bottom: 1rem;
+  padding: .5rem 0;
+}
+
+.about-page h1,
+.about-page h2 {
+  color: var(--deep-green);
+  margin-bottom: 1rem;
+}
+
+.about-page p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.about-page strong {
+  font-weight: 600;
+}
+
+/*
+------------------------------------------------------------------
+--------------------------SERVICES PAGE---------------------------
+------------------------------------------------------------------
+*/
+
+.services-page {
+  background-color: var(--cream);
+  color: var(--text-dark);
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-page section {
+  margin-bottom: 1rem;
+  padding: .5rem 0;
+
+}
+
+.services-page h1,
+.services-page h2 {
+  color: var(--deep-green);
+  margin-bottom: 1rem;
+}
+
+.services-page p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.services-page ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/*
+------------------------------------------------------------------
+--------------------------CONTACT PAGE----------------------------
+------------------------------------------------------------------
+*/
+
+.contact-page {
+  background-color: var(--cream);
+  color: var(--text-dark);
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-page section {
+  margin-bottom: 1rem;
+  padding: .5rem 0;
+}
+
+.contact-page h1,
+.contact-page h2 {
+  color: var(--deep-green);
+  margin-bottom: 1rem;
+}
+
+.contact-page p {
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Styles */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-form label {
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(156, 175, 159, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  /*
+  ------------------------------------------------------------------
+  --------------------------FOOTER----------------------------------
+  ------------------------------------------------------------------
+  */
+
+  .footer-inner {
+    flex-direction: column;
+    /* stack vertically */
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-contact {
+    max-width: 100%;
+  }
+
+  .footer-links ul {
+    display: inline-block;
+  }
+
+  /*
+  ------------------------------------------------------------------
+  --------------------------NAVBAR----------------------------------
+  ------------------------------------------------------------------
+  */
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--deep-green);
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /*
+  ------------------------------------------------------------------
+  --------------------------HOME PAGE-------------------------------
+  ------------------------------------------------------------------
+  */
+
+  .split-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 50vh;
+    clip-path: none;
+  }
+
+  .elevated-care {
+    padding: 3.5rem 2rem;
   }
 }
